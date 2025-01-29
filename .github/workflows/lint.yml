@@ -1,0 +1,26 @@
+name: Linting
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Vérifier le code avec PHP Lint
+      run: |
+        sudo apt-get install php
+        php -l $(find . -type f -name '*.php')
+
+    - name: Vérifier le code avec PHP CodeSniffer
+      run: |
+        composer install
+        ./vendor/bin/phpcs --standard=PSR12 --extensions=php ./lib/
+
+    - name: Vérifier le code avec PHP Mess Detector
+      run: |
+        composer install
+        ./vendor/bin/phpmd ./lib ansi codesize,unusedcode,naming
