@@ -1,5 +1,6 @@
 <?php
 use PrivateBin\I18n;
+
 ?><!DOCTYPE html>
 <html lang="<?php echo I18n::_('en'); ?>">
 	<head>
@@ -11,25 +12,25 @@ use PrivateBin\I18n;
 		<link type="text/css" rel="stylesheet" href="css/privatebin.css?<?php echo rawurlencode($VERSION); ?>" />
 <?php
 if ($SYNTAXHIGHLIGHTING):
-?>
+    ?>
 		<link type="text/css" rel="stylesheet" href="css/prettify/prettify.css?<?php echo rawurlencode($VERSION); ?>" />
 <?php
-    if (strlen($SYNTAXHIGHLIGHTINGTHEME)):
-?>
+        if (strlen($SYNTAXHIGHLIGHTINGTHEME)):
+            ?>
 		<link type="text/css" rel="stylesheet" href="css/prettify/<?php echo rawurlencode($SYNTAXHIGHLIGHTINGTHEME); ?>.css?<?php echo rawurlencode($VERSION); ?>" />
 <?php
-    endif;
+        endif;
 endif;
 ?>
 		<script type="text/javascript" data-cfasync="false" src="js/jquery-3.6.1.js" crossorigin="anonymous"></script>
 <?php
 if ($QRCODE):
-?>
+    ?>
 		<script async type="text/javascript" data-cfasync="false" src="js/kjua-0.9.0.js" crossorigin="anonymous"></script>
 <?php
 endif;
 if ($ZEROBINCOMPATIBILITY):
-?>
+    ?>
 		<script type="text/javascript" data-cfasync="false" src="js/base64-1.7.js" crossorigin="anonymous"></script>
 <?php
 endif;
@@ -39,12 +40,12 @@ endif;
 		<script type="text/javascript" data-cfasync="false" src="js/rawinflate-0.3.js" crossorigin="anonymous"></script>
 <?php
 if ($SYNTAXHIGHLIGHTING):
-?>
+    ?>
 		<script type="text/javascript" data-cfasync="false" src="js/prettify.js?<?php echo rawurlencode($VERSION); ?>" crossorigin="anonymous"></script>
 <?php
 endif;
 if ($MARKDOWN):
-?>
+    ?>
 		<script type="text/javascript" data-cfasync="false" src="js/showdown-2.1.0.js" crossorigin="anonymous"></script>
 <?php
 endif;
@@ -78,16 +79,20 @@ endif;
 		<header>
 			<div id="aboutbox">
 				<?php echo sprintf(
-                    I18n::_('%s is a minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted %sin the browser%s using 256 bits AES.',
-                        I18n::_($NAME),
-                        '%s', '%s'
-                    ),
-                    '<i>', '</i>'), ' ', $INFO;
-                ?>
+				    I18n::_(
+				        '%s is a minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted %sin the browser%s using 256 bits AES.',
+				        I18n::_($NAME),
+				        '%s',
+				        '%s'
+				    ),
+				    '<i>',
+				    '</i>'
+				), ' ', $INFO;
+?>
 				<br />
 <?php
 if (strlen($NOTICE)):
-?>
+    ?>
 				<span class="blink">▶</span> <?php echo I18n::encode($NOTICE);
 endif;
 ?>
@@ -105,7 +110,7 @@ endif;
 			</div>
 <?php
 if ($HTTPWARNING):
-?>
+    ?>
 			<div id="httpnotice" class="errorMessage hidden">
 				<?php echo I18n::_('This website is using an insecure connection! Please only use it for testing.'); ?><br />
 				<span class="small"><?php echo I18n::_('For more information <a href="%s">see this FAQ entry</a>.', 'https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-it-show-me-an-error-about-an-insecure-connection'); ?></span>
@@ -132,7 +137,7 @@ endif;
 					<button id="emaillink" class="hidden"><img src="img/icon_email.png" width="15" height="15" alt="" /><?php echo I18n::_('Email'); ?></button>
 <?php
 if ($QRCODE):
-?>
+    ?>
 					<button id="qrcodelink" class="hidden"><img src="img/icon_qr.png" width="15" height="15" alt="" /><?php echo I18n::_('QR code'); ?></button>
 <?php
 endif;
@@ -141,12 +146,12 @@ endif;
 						<select id="pasteExpiration" name="pasteExpiration">
 <?php
 foreach ($EXPIRE as $key => $value):
-?>
+    ?>
 							<option value="<?php echo $key; ?>"<?php
-    if ($key == $EXPIREDEFAULT):
-?> selected="selected"<?php
-    endif;
-?>><?php echo $value; ?></option>
+        if ($key == $EXPIREDEFAULT):
+            ?> selected="selected"<?php
+        endif;
+    ?>><?php echo $value; ?></option>
 <?php
 endforeach;
 ?>
@@ -156,26 +161,26 @@ endforeach;
 					<div id="burnafterreadingoption" class="button hidden">
 						<input type="checkbox" id="burnafterreading" name="burnafterreading"<?php
 if ($BURNAFTERREADINGSELECTED):
-?> checked="checked"<?php
+    ?> checked="checked"<?php
 endif;
 ?> />
 						<label for="burnafterreading"><?php echo I18n::_('Burn after reading'); ?></label>
 					</div>
 <?php
 if ($DISCUSSION):
-?>
+    ?>
 					<div id="opendiscussionoption" class="button hidden">
 						<input type="checkbox" id="opendiscussion" name="opendiscussion"<?php
-    if ($OPENDISCUSSION):
-?> checked="checked"<?php
-    endif;
-?> />
+        if ($OPENDISCUSSION):
+            ?> checked="checked"<?php
+        endif;
+    ?> />
 						<label for="opendiscussion"><?php echo I18n::_('Open discussion'); ?></label>
 					</div>
 <?php
 endif;
 if ($PASSWORD):
-?>
+    ?>
 					<div id="password" class="hidden">
 						<input type="password" id="passwordinput" placeholder="<?php echo I18n::_('Password (recommended)'); ?>" size="32" />
 					</div>
@@ -186,12 +191,12 @@ endif;
 						<select id="pasteFormatter" name="pasteFormatter">
 <?php
 foreach ($FORMATTER as $key => $value):
-?>
+    ?>
 							<option value="<?php echo $key; ?>"<?php
-    if ($key == $FORMATTERDEFAULT):
-?> selected="selected"<?php
-    endif;
-?>><?php echo $value; ?></option>
+        if ($key == $FORMATTERDEFAULT):
+            ?> selected="selected"<?php
+        endif;
+    ?>><?php echo $value; ?></option>
 <?php
 endforeach;
 ?>
@@ -199,20 +204,20 @@ endforeach;
 					</div>
 <?php
 if (strlen($LANGUAGESELECTION)):
-?>
+    ?>
 					<div id="language" class="button">
 						<select name="lang">
 <?php
-    foreach ($LANGUAGES as $key => $value):
-?>
+        foreach ($LANGUAGES as $key => $value):
+            ?>
 							<option data-lang="<?php echo $key; ?>" value="<?php echo $key; ?>"<?php
-        if ($key == $LANGUAGESELECTION):
-?> selected="selected"<?php
-        endif;
-?>><?php echo $value[0]; ?> (<?php echo $value[1]; ?>)</option>
+                    if ($key == $LANGUAGESELECTION):
+                        ?> selected="selected"<?php
+                    endif;
+            ?>><?php echo $value[0]; ?> (<?php echo $value[1]; ?>)</option>
 <?php
-    endforeach;
-?>
+        endforeach;
+    ?>
 						</select>
 					</div>
 <?php
@@ -221,7 +226,7 @@ endif;
 				</div>
 <?php
 if ($QRCODE):
-?>
+    ?>
 				<div id="qrcode-display"></div>
 <?php
 endif;
@@ -230,7 +235,7 @@ endif;
 					<div id="pastelink"></div>
 <?php
 if (strlen($URLSHORTENER)):
-?>
+    ?>
 					<button id="shortenbutton" data-shortener="<?php echo I18n::encode($URLSHORTENER); ?>"><img src="img/icon_shorten.png" width="13" height="15" /><?php echo I18n::_('Shorten URL'); ?></button>
 <?php
 endif;
@@ -238,7 +243,7 @@ endif;
 				</div>
 <?php
 if ($FILEUPLOAD):
-?>
+    ?>
 				<div id="attachment" class="hidden"><a><?php echo I18n::_('Download attachment'); ?></a></div>
 				<div id="attach" class="hidden">
 					<span id="clonedfile" class="hidden"><?php echo I18n::_('Cloned file attached.'); ?></span>
@@ -269,7 +274,7 @@ endif;
 		</section>
 <?php
 if ($DISCUSSION):
-?>
+    ?>
 		<div id="serverdata" class="hidden" aria-hidden="true">
 			<div id="templates">
 				<article id="commenttemplate" class="comment"><div class="commentmeta"><span class="nickname">name</span><span class="commentdate">0000-00-00</span></div><div class="commentdata">c</div><button class="btn btn-default btn-sm"><?php echo I18n::_('Reply'); ?></button></article>
@@ -282,7 +287,7 @@ endif;
 ?>
 <?php
 if ($FILEUPLOAD):
-?>
+    ?>
 		<div id="dropzone" class="hidden" tabindex="-1" aria-hidden="true"></div>
 <?php
 endif;
@@ -290,7 +295,7 @@ endif;
 		<section class="container">
 			<div id="noscript" role="alert" class="nonworking alert alert-info noscript-hide"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
 				<span> <?php echo I18n::_('Loading…'); ?></span><br>
-				<span class="small"><?php echo I18n::_('In case this message never disappears please have a look at <a href="%s">this FAQ for information to troubleshoot</a>.', 'https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-the-loading-message-not-go-away'); ?></span>
+				<span class="small"><?php echo    I18n::_('In case this message never disappears please have a look at <a href="%s">this FAQ for information to troubleshoot</a>.', 'https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-the-loading-message-not-go-away'); ?></span>
 			</div>
 		</section>
 	</body>
