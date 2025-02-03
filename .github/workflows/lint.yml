@@ -20,16 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --dev
+          make install
 
       - name: Run PHP Lint
         run: |
-          find . -type f -name "*.php" -exec php -l {} \;
-
-      - name: Run PHP CodeSniffer
-        run: |
-          ./vendor/bin/phpcs --extensions=php --standard=PSR2 .
-
-      - name: Run PHP Mess Detector
-        run: |
-          ./vendor/bin/phpmd . ansi codesize,unusedcode,naming
+          make lint
