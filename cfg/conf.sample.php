@@ -184,10 +184,10 @@ dir = PATH "data"
 ;class = Database
 ;[model_options]
 ;dsn = "mysql:host=localhost;dbname=privatebin;charset=UTF8"
-;tbl = "privatebin_"	; table prefix
+;tbl = "privatebin_"    ; table prefix
 ;usr = "privatebin"
 ;pwd = "Z3r0P4ss"
-;opt[12] = true	  ; PDO::ATTR_PERSISTENT
+;opt[12] = true      ; PDO::ATTR_PERSISTENT
 
 ;[model]
 ; example of DB configuration for SQLite
@@ -196,7 +196,7 @@ dir = PATH "data"
 ;dsn = "sqlite:" PATH "data/db.sq3"
 ;usr = null
 ;pwd = null
-;opt[12] = true	; PDO::ATTR_PERSISTENT
+;opt[12] = true    ; PDO::ATTR_PERSISTENT
 
 ;[model]
 ; example of DB configuration for PostgreSQL
