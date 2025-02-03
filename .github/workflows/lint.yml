@@ -1,0 +1,35 @@
+name: Lint Code
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'  # Ajuste la version PHP si nécessaire
+
+      - name: Install dependencies
+        run: |
+          composer install --dev
+
+      - name: Run PHP Lint
+        run: |
+          find . -type f -name "*.php" -exec php -l {} \;
+
+      - name: Run PHP CodeSniffer
+        run: |
+          ./vendor/bin/phpcs --extensions=php --standard=PSR2 .
+
+      - name: Run PHP Mess Detector
+        run: |
+          ./vendor/bin/phpmd . ansi codesize,unusedcode,naming
