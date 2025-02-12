@@ -1,0 +1,33 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main  # Remplacez par la branche que vous souhaitez surveiller
+  pull_request:
+    branches:
+      - main  # Remplacez par la branche que vous souhaitez surveiller
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Utilisez la version de Node.js que vous utilisez localement
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Cypress
+      run: npm install cypress --save-dev
+
+    - name: Run Cypress tests
+      run: npx cypress run
+      env:
+        CYPRESS_BASE_URL: http://localhost:8080  # Assurez-vous que cette URL est correcte pour votre environnement de test
